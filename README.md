@@ -1,4 +1,4 @@
-# LAX — Linked Agent eXchange
+# LAX - Linked Agent eXchange
 
 [![npm version](https://img.shields.io/npm/v/@godman-protocols/lax.svg)](https://www.npmjs.com/package/@godman-protocols/lax)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -20,9 +20,9 @@ npm install @godman-protocols/lax
 
 Multi-agent systems are emerging everywhere, but there is no standard way for agents to advertise what they can do or for other agents to find them. Without a discovery layer, agents are:
 
-- **Invisible** — capabilities exist but no one knows about them
-- **Manually wired** — every integration requires bespoke configuration
-- **Unverifiable** — no way to check constitutional compliance or trust scores before transacting
+- **Invisible** - capabilities exist but no one knows about them
+- **Manually wired** - every integration requires bespoke configuration
+- **Unverifiable** - no way to check constitutional compliance or trust scores before transacting
 
 LAX is the missing discovery layer between agent capability and agent commerce.
 
@@ -35,7 +35,7 @@ LAX is the missing discovery layer between agent capability and agent commerce.
 | **LaxOffer** | A JSON document at `/.well-known/lax-offer.json` declaring an agent's capabilities, identity, pricing, and constitutional constraints |
 | **LaxCapability** | A single skill the agent offers, with input/output schemas and pricing |
 | **LaxPricing** | Payment model, amount, currency, and rail for a capability |
-| **RegistryClient** | Client for the LAX Registry — register, search, and validate offers |
+| **RegistryClient** | Client for the LAX Registry - register, search, and validate offers |
 | **A2AExporter** | Converts LAX offers to Google A2A `/.well-known/agent.json` format |
 
 ---
@@ -43,7 +43,7 @@ LAX is the missing discovery layer between agent capability and agent commerce.
 ## Three Discovery Mechanisms
 
 1. **Self-hosted**: Serve `/.well-known/lax-offer.json` from your agent's domain
-2. **LAX Registry**: `lax.kognai.ai/registry` — search, browse, and validate offers
+2. **LAX Registry**: `lax.kognai.ai/registry` - search, browse, and validate offers
 3. **ClaWHub / OpenClaw**: Auto-published as an OpenClaw skill
 
 Registry access: **Read = free. Write = x402-gated ($0.01 USDC).**
@@ -128,8 +128,8 @@ const json = A2AExporter.serialize(a2aCard);
 | `createOffer(params)` | Create a LaxOffer with defaults |
 | `createCapability(params)` | Create a LaxCapability entry |
 | `validateOffer(offer)` | Local structural validation of an offer |
-| `RegistryClient` | Registry client — `register()`, `search()`, `validate()` |
-| `A2AExporter` | Export to A2A format — `export()`, `serialize()` |
+| `RegistryClient` | Registry client - `register()`, `search()`, `validate()` |
+| `A2AExporter` | Export to A2A format - `export()`, `serialize()` |
 | `fetchOffer(baseUrl)` | Fetch a LAX offer from `/.well-known/lax-offer.json` |
 | `fetchA2ACard(baseUrl)` | Fetch an A2A card from `/.well-known/agent.json` |
 
@@ -150,8 +150,8 @@ const json = A2AExporter.serialize(a2aCard);
 
 | Protocol | How LAX connects |
 |----------|------------------|
-| **PACT** | LAX offer declares `pact_endpoint` — agents discover via LAX, then negotiate via PACT |
-| **SOUL** | LAX offer includes `soul_uri` — constitutional identity verified before transaction |
+| **PACT** | LAX offer declares `pact_endpoint` - agents discover via LAX, then negotiate via PACT |
+| **SOUL** | LAX offer includes `soul_uri` - constitutional identity verified before transaction |
 | **SCORE** | `acp_score` in LAX offer comes from SCORE's constitutional output rating |
 | **AMF** | Memory vectors from AMF inform capability descriptions and pricing adjustments |
 | **DRS** | Deal receipts reference the LAX `skill_id` used in the transaction |
@@ -161,7 +161,7 @@ const json = A2AExporter.serialize(a2aCard);
 
 ## License
 
-Apache License 2.0 — see [LICENSE](./LICENSE)
+Apache License 2.0 - see [LICENSE](./LICENSE)
 
 Part of the [Godman Protocols](https://github.com/Godman-s) portfolio.
 
@@ -179,4 +179,4 @@ Every movement is receipted (DRS) and kept in a public-facing ledger. Canonical 
 
 Use `createJobsClient()` to read and submit LAX jobs. Calls use `fetch` only. Reads retry network, 429 and 5xx responses, while submissions retry only 429. Errors are `LaxJobsError` instances with `status` and `code`.
 
-Set `LAX_LIVE=1` to run the read-only live acceptance test.
+Run `bun test test/jobs.test.ts` for acceptance tests A1 to A6. Set `LAX_LIVE=1` to include the read-only live A7 test.
